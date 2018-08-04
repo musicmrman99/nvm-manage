@@ -12,10 +12,10 @@ nvm_manage__set_global_defaults() {
 }
 
 nvm_manage__print_globals() {
-	printf "nvm-manage globals:"
+	printf "nvm-manage globals:\n"
 	printf "nvm_manage__repo_url('%s')\n" "$nvm_manage__repo_url"
 	printf '\n'
-	printf "nvm globals:"
+	printf "nvm globals:\n"
 	printf "NVM_DIR('%s')\n" "$NVM_DIR"
 }
 
