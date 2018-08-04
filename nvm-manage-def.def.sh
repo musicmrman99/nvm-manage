@@ -60,6 +60,24 @@ nvm_manage__start() {
 # --------------------------------------------------
 
 nvm_manage() {
+	# The following is a modified version of this: http://stackoverflow.com/a/246128
+	local nvm_manage_source
+	local nvm_manage_dir
+
+	nvm_manage_source="${BASH_SOURCE[0]}"
+
+	# resolve $nvm_manage_source until the file is no longer a symlink
+	while [ -h "$nvm_manage_source" ]; do
+		nvm_manage_dir="$(cd -P "$( dirname "$nvm_manage_source" )" && pwd)"
+		nvm_manage_source="$(readlink "$nvm_manage_source")"
+
+		# if $nvm_manage_source was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+		[[ $nvm_manage_source != /* ]] && nvm_manage_source="$nvm_manage_dir/$nvm_manage_source"
+	done
+	nvm_manage_dir="$(cd -P "$( dirname "$nvm_manage_source" )" && pwd)"
+
+	# ------------------------------------------------------------
+
 	local help=false
 	while [ "$(printf '%s' "$1" | head -c 1)" = '-' ]; do
 		case "$1" in
