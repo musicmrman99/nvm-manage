@@ -3,7 +3,7 @@ Syntax:
     nvm-manage (command) [args...]
 
 Description:
-    A wrapper for nvm, allowing easy installation and updating.
+    A management utility for nvm, allowing easy installation and updating.
 
 Commands:
     globals
