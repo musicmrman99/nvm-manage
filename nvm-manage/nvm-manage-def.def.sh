@@ -1,15 +1,10 @@
 # Default Variables
 # --------------------------------------------------
 
-nvm_manage__default__repo_url="https://github.com/creationix/nvm.git" # Change this if needed
-nvm_manage__default__dir="$HOME/.nvm" # The location given in the NVM install instructions
+nvm_manage__repo_url="https://github.com/creationix/nvm.git" # Change this if needed
+NVM_DIR="$HOME/.nvm" # The location given in the NVM install instructions
 
 # --------------------
-
-nvm_manage__set_global_defaults() {
-	nvm_manage__repo_url="$nvm_manage__default__repo_url"
-	NVM_DIR="$nvm_manage__default__dir"
-}
 
 nvm_manage__print_globals() {
 	printf "nvm-manage globals:\n"
@@ -100,7 +95,6 @@ nvm_manage() {
 	"globals")
 		shift
 		case "$1" in
-		"reset") nvm_manage__set_global_defaults "$@";;
 		"print") nvm_manage__print_globals "$@";;
 		*)
 			printf "Error: unrecognised globals command '%s'\n" "$1"
