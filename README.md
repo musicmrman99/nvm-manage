@@ -22,8 +22,17 @@ git clone https://github.com/musicmrman99/nvm-manage.git "[INSTALL LOCATION]"
 
 Then add the following to your (Bourne-compatible) shell's init file:
 ```sh
-if [ -f "[INSTALL LOCATION]/nvm-manage/nvm-manage-def.def.sh" ]; then
-    . "[INSTALL LOCATION]/nvm-manage/nvm-manage-def.def.sh"
+nvm_manage_dir_path="[INSTALL LOCATION]"
+nvm_manage_def_path="$nvm_manage_dir_path/nvm-manage/nvm-manage-def.def.sh"
+if [ -f "$nvm_manage_def_path" ]; then
+    . "$nvm_manage_def_path"
+    # If it exists, but is not a directory, do not set it
+    if [ ! -e "$nvm_manage_dir_path/dist" ]; then
+        mkdir "$nvm_manage_dir_path/dist"
+    fi
+    if [ -d "$nvm_manage_dir_path/dist" ]; then
+        nvm-manage set-dir "$nvm_manage_dir_path/dist"
+    fi
 fi
 ```
 

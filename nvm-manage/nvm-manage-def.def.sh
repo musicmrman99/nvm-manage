@@ -1,7 +1,7 @@
 # Default Variables
 # --------------------------------------------------
 
-nvm_manage__repo_url="https://github.com/creationix/nvm.git" # Change this if needed
+nvm_manage__repo_url="https://github.com/nvm-sh/nvm.git" # Change this if needed
 NVM_DIR="$HOME/.nvm" # The location given in the NVM install instructions
 
 # --------------------
